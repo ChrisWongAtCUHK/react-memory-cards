@@ -156,7 +156,7 @@ function App() {
       }
       setUserSelection(() => [])
     }
-  }, [userSelection])
+  }, [cardList, userSelection])
 
   return (
     <div className='container'>
