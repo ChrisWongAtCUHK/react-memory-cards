@@ -89,8 +89,30 @@ function App() {
     }
   }, [])
   useEffect(() => {
-    console.log(cardList)
-  }, [cardList])
+    if(userSelection.length === 2) {
+      const cardOne = userSelection[0]
+      const cardTwo = userSelection[1]
+
+      if(cardOne.faceValue === cardTwo.faceValue) {
+        setCardList((pre) => {
+          const cards = [...pre]
+          pre[cardOne.position].matched = true
+          pre[cardTwo.position].matched = true
+          return cards
+        })
+      } else {
+        setTimeout(() => {
+          setCardList((pre) => {
+            const cards = [...pre]
+            pre[cardOne.position].visible = false
+            pre[cardTwo.position].visible = false
+            return cards
+          })
+        }, 1000);
+      }
+      setUserSelection(() => [])
+    }
+  }, [userSelection])
 
   return (
     <div className='container'>
