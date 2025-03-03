@@ -3,6 +3,7 @@ import _ from 'lodash'
 import Header from './components/Header'
 import Gameboard from './components/Gameboard'
 import Button from './components/Button'
+import Footer from './components/Footer'
 import './App.css'
 import rapDeck from './data/rapDeck.json'
 import { launchConfetti } from './utilities/confetti'
@@ -11,7 +12,7 @@ function App() {
   const [cardList, setCardList] = useState([])
   const [userSelection, setUserSelection] = useState([])
   const [newPlayer, setNewPlayer] = useState(true)
-  const [status, setStatus] = useState('')
+  const [status, setStatus] = useState('0')
   
   const initialized = useRef(false)
 
@@ -162,6 +163,7 @@ function App() {
       <Header />
       <Gameboard cardList={cardList} flipCard={flipCard} />
       <Button newPlayer={newPlayer} startNewGame={startNewGame}  />
+      <Footer status={status}/>
     </div>
   )
 }
